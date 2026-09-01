@@ -1,6 +1,8 @@
 # prog-b
 Projeto para a materia de programção B
+
 NOME: FAROLDEPREÇOS
+
 RESUMO DO PROJETO: O projeto é uma plataforma colaborativa que funciona como um comparador de preços voltado para produtos de supermercado. O objetivo da aplicação é criar uma comunidade onde os próprios usuários registram os valores dos alimentos e produtos que encontram nos estabelecimentos locais. Dessa forma, o sistema centraliza essas informações e permite que qualquer pessoa pesquise um item e descubra em qual mercado ele está mais barato no momento, ajudando a população a economizar nas compras do dia a dia e aproveitar promoções (como queimas de estoque por vencimento próximo).
 
 FUNCIONALIDADES: 
