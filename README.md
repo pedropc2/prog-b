@@ -10,4 +10,4 @@ Autenticação e Perfil de Usuário: Sistema de cadastro e login para que os usu
 Cadastro de Ofertas: Formulário onde o usuário insere os dados do produto encontrado: nome do item, preço atual e o local/mercado onde foi visto.
 Sinalização de Promoções Temporárias: Opção ao cadastrar o preço para indicar se aquele valor tem uma data de validade prevista (ex: produtos próximos ao vencimento ou promoções de fim de semana).
 Busca e Comparação de Produtos: Barra de pesquisa para os usuários procurarem um alimento específico e visualizarem uma lista comparativa com todos os preços daquele produto registrados na região.
-Ranking do Melhor Preço: Lógica que destaca automaticamente qual estabelecimento está oferecendo o produto pelo menor valor atualizado.Ranking do Melhor Preço: Lógica que destaca automaticamente qual estabelecimento está oferecendo o produto pelo menor valor atualizado.
+Ranking do Melhor Preço: Lógica que destaca automaticamente qual estabelecimento está oferecendo o produto pelo menor valor atualizado.
