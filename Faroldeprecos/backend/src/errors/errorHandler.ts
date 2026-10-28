@@ -1,22 +1,27 @@
 import { Request, Response, NextFunction } from "express";
-
-interface AppError extends Error {
-  statusCode?: number;
-  code?: string;
-}
+import { AppError } from "./AppError";
 
 export function errorHandler(
-  err: AppError,
+  err: Error,
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  console.error(err);
-  const statusCode = err.statusCode ?? 500;
-  const code = err.code ?? "INTERNAL_ERROR";
-  const message = err.message ?? "Erro interno do servidor.";
-  
-  res.status(statusCode).json({
-    error: { code, message },
+  console.error("LOG INTERNO DO SERVIDOR:", err);
+
+  if (err instanceof AppError) {
+    return res.status(err.statusCode).json({
+      erro: {
+        codigo: err.code,
+        mensagem: err.message,
+      },
+    });
+  }
+
+  return res.status(500).json({
+    erro: {
+      codigo: "INTERNAL_SERVER_ERROR",
+      mensagem: "Ocorreu um erro interno inesperado no servidor.",
+    },
   });
 }
