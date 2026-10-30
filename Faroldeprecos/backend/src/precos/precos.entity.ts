@@ -28,7 +28,7 @@ export class Preco {
     this._mercadoId = props.mercadoId;
     this._usuarioId = props.usuarioId;
     
-    // Regra de negócio simples: Preço não pode ser negativo
+    
     if (props.preco < 0) {
       throw new Error("O valor do preço não pode ser negativo.");
     }
@@ -40,7 +40,7 @@ export class Preco {
     this._data = props.data ?? new Date();
   }
 
-  // GETTERS (Para o Controller conseguir ler os dados)
+  // Para o Controller conseguir ler os dados
   public get id(): number { return this._id; }
   public get produtoId(): number { return this._produtoId; }
   public get mercadoId(): number { return this._mercadoId; }
@@ -52,7 +52,7 @@ export class Preco {
   public get observacao(): string | undefined { return this._observacao; }
   public get createdAt(): Date { return this._createdAt; }
 
-  // SETTERS (Para permitir alterações, como atualizar o valor do preço)
+  // Para permitir alterações como atualizar o valor do preço
   public set preco(value: number) {
     if (value < 0) throw new Error("O valor do preço não pode ser negativo.");
     this._preco = value;

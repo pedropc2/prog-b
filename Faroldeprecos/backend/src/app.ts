@@ -1,26 +1,33 @@
-import "dotenv/config";
-import express, { Request, Response, NextFunction } from "express";
-import precosRoutes from "./precos/precos.routes";
+import express from "express";
+import cors from "cors";
+import rotasPrecos from "./precos/precos.routes";
+import rotasAuth from "./auth/auth.routes";
+import rotasCategorias from "./categorias/categorias.routes";
+import rotasMercados from "./mercados/mercados.routes";
 import { errorHandler } from "./errors/errorHandler";
-import { loadConfig } from "./config";
+import { configurarSwagger } from "./docs/swagger"; 
 
-const config = loadConfig();
 const app = express();
 
-// Rotas
-app.use(precosRoutes);
+app.use(cors());
+app.use(express.json());
 
-// Middleware para rota não encontrada (404)
-app.use((req: Request, res: Response, next: NextFunction) => {
-  const err: any = new Error("A rota solicitada não existe.");
-  err.statusCode = 404;
-  err.code = "ROUTE_NOT_FOUND";
-  next(err);
-});
 
-// Tratamento de erros global
+configurarSwagger(app);
+
+
+app.use(rotasAuth);
+app.use(rotasCategorias);
+app.use(rotasMercados);
+app.use(rotasPrecos);
+
+
 app.use(errorHandler);
 
-app.listen(config.port, () => {
-  console.log(`Servidor rodando em http://localhost:${config.port}`);
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`🚀 Servidor rodando na porta ${PORT}`);
 });
+
+export default app;

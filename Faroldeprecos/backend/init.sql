@@ -1,0 +1,40 @@
+CREATE TABLE IF NOT EXISTS usuarios (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS categorias (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS mercados (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    endereco VARCHAR(200) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS produtos (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    imagem_url VARCHAR(255),
+    categoria_id INT REFERENCES categorias(id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS precos (
+    id SERIAL PRIMARY KEY,
+    valor DECIMAL(10,2) NOT NULL,
+    data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    produto_id INT REFERENCES produtos(id) ON DELETE CASCADE,
+    mercado_id INT REFERENCES mercados(id) ON DELETE CASCADE,
+    usuario_id INT REFERENCES usuarios(id) ON DELETE CASCADE
+);
+
+INSERT INTO usuarios (nome, email, senha) 
+VALUES ('Ana Silva', 'ana@email.com', '$2b$10$X8A2f4Iq.rG4sE9K6S1gduM5O1Zf.Gv1h/z3J9Y2vQ4K1lW7S8Y2e')
+ON CONFLICT (email) DO NOTHING;
