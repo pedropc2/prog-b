@@ -1,5 +1,5 @@
 # prog-b
-Projeto para a materia de programção B
+Projeto para a materia de programção B (DESATUALIZADA)
 
 NOME: FAROLDEPREÇOS
 
